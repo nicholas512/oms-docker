@@ -50,6 +50,10 @@ Copy and paste the following command. This should work on all platforms.
 
 ```$ docker run --rm -v $(pwd):/work omslab/oms:beta simulation/Simulation.sim```
 
+The following command works for Windows users
+
+```$ docker run --rm -v C:\<full_path>\<project>:/work omslab/oms:beta simulation/Simulation.sim```
+
 Options:
 
 * ```run``` will download the image and executes it afterwards.
@@ -58,6 +62,7 @@ Options:
   for OMS.
 * ```omslab/oms```: this is the image name ```<organization_name>/<image_name>```
   to run.
+* ```simulation/Simulation.sim```: this is the path to sim file you want to run
 
 The command above will automatically download the **latest** Docker image of OMS from DockerHub (the download is required just for the very first time) and run it. Next time you invoke the ```run``` command, OMS will just simply start on your machine.
 

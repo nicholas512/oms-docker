@@ -2,8 +2,7 @@ FROM ubuntu:zesty
 
 MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid@colostate.edu>
 
-COPY oms-3.5.26-console.zip .
-COPY entrypoint.sh .
+COPY oms-3.5.26-console.zip entrypoint.sh ./
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 ENV simulation /work/simulation/Simulation.sim
@@ -22,7 +21,6 @@ RUN set -x \
             make \
             unzip \
             python-dev \
-#python-setuptools \
             openjdk-8-jdk \
             ant \
             python-pip \

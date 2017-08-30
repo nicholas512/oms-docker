@@ -28,6 +28,8 @@ RUN set -x \
             ant \
             python-pip \
             r-base \
+            libblas-dev \
+            liblapack-dev \
         \
         # install setuptools wheel and jep python packages
         && pip2 install setuptools \

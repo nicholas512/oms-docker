@@ -13,6 +13,7 @@ It is lightweight, open, less invasive and more flexible than other environmenta
 This image packages the OMS framework and following features:
 
 * Python binding (for python 2)
+* R binding
 
 Its availability makes running OMS and related features much easier on every box. No linking and environment variables set up are required anymore.
 

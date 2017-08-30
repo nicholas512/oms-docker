@@ -7,6 +7,7 @@ COPY oms-3.5.26-console.zip entrypoint.sh ./
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 ENV simulation /work/simulation/Simulation.sim
 ENV LD_LIBRARY_PATH /usr/local/lib/python2.7/dist-packages/jep
+ENV R_LIBS /work/Rlibs/build/
 
 RUN set -x \
         \
@@ -18,16 +19,26 @@ RUN set -x \
             wget \
             binutils \
             gcc \
+            g++ \
+            gfortran \
             make \
             unzip \
             python-dev \
             openjdk-8-jdk \
             ant \
             python-pip \
+            r-base \
         \
+        # install setuptools wheel and jep python packages
         && pip2 install setuptools \
         && pip2 install wheel \
         && pip2 install jep==3.6.4 \
+        \
+        && wget https://cran.r-project.org/src/contrib/Rserve_1.7-3.tar.gz \
+        && wget https://cran.r-project.org/src/contrib/Rcpp_0.12.12.tar.gz \
+        && R CMD INSTALL Rserve_1.7-3.tar.gz \
+        && R CMD INSTALL Rcpp_0.12.12.tar.gz \
+        # oms set up
         && unzip oms-3.5.26-console.zip \
         && rm oms-3.5.26-console.zip \
         && mkdir -p /root/.oms/3.5.26/ \
@@ -36,14 +47,7 @@ RUN set -x \
         && cp oms-3.5.26-console/lib/jcommon-1.0.15.jar /root/.oms/3.5.26/ \
         && cp oms-3.5.26-console/lib/jfreechart-1.0.12.jar /root/.oms/3.5.26/ \
         && cp oms-3.5.26-console/lib/oms-all.jar /root/.oms/3.5.26/ \
-        && apt-get -y remove --purge \
-            wget \
-            binutils \
-            gcc \
-            make \
-            unzip \
-            python-pip \
-        && apt-get -y autoremove --purge \
+        \
         && mkdir /work \
         && chmod +x /entrypoint.sh
 

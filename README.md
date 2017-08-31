@@ -125,6 +125,9 @@ Hello World  ...
 $_
 ```
 
+## R binding
+
+To include an R OMS compliant component in your modeling solution, you have to create a **```Rlibs```** directory into the OMS project. Inside the ```Rlibs``` directory create a **```source```** directory where save the source code of the R packages required (including dependencies).
 
 ## Building error
 

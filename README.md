@@ -37,7 +37,11 @@ If you have never used OMS before, please download the [ex01][] project and unpa
 
 ```$ unzip ex01.zip```
 
-This small data helps exercising an OMS run. More examples can be found at [Basic Examples][] web page.
+This small data helps exercising an OMS run. More OMS examples are made available at [Basic Examples][] web page.
+This repo contains also:
+
+* [rbind_mainExample][]: this OMS project exercises the R binding
+* [TransimsOMS_example][]: this OMS project exercises the Python binding
 
 
 ## 3. Run OMS
@@ -194,6 +198,8 @@ Kralisch, S., Krause, P., & David, O. (2005). [Using the object modeling system 
 [Mac OS X]: https://docs.docker.com/docker-for-mac/
 [Windows]: https://docs.docker.com/docker-for-windows/
 [ex01]: https://github.com/sidereus3/oms-docker/blob/master/ex01.zip?raw=true
+[rbind_mainExample]: https://github.com/sidereus3/oms-docker/blob/master/rbind_mainExample.zip?raw=true
+[TransimsOMS_example]: https://github.com/sidereus3/oms-docker/blob/master/TransimsOMS_example.zip?raw=true
 [Basic Examples]: https://alm.engr.colostate.edu/cb/wiki/17119
 [A software engineering perspective on environmental modeling framework design: The Object Modeling System]: http://www.sciencedirect.com/science/article/pii/S1364815212000886
 [Developing natural resource models using the object modeling system: feasibility and challenges]: https://hal.archives-ouvertes.fr/hal-00296806/

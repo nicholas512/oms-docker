@@ -1,6 +1,15 @@
 #!/bin/bash
 
-set -e
+abort() {
+    echo >&2 '
+***************
+*** ABORTED ***
+***************
+'
+    echo "An error occured. Exiting..." >&2
+
+    exit 1
+}
 
 buildOMSprj() {
     if [ ! -d build/ ];
@@ -10,23 +19,32 @@ buildOMSprj() {
 }
 
 buildRpackages() {
-    if [ ! -d source/ ];
+    if [ ! -d Rlibs/source/ ];
     then
+       rm -r Rlibs/build/
        echo "ERROR: source folder and R packages not found"
        exit 1
+    elif [ ! -e Rlibs/package.json ];
+    then
+        rm -r Rlibs/build/
+        cp /package.json Rlibs/
+        echo "ERROR: package.json not found. Template provided"
+        exit 1
     else
-        R CMD INSTALL -l build/ source/*.tar.gz
+        if ! python2 /packageParser.py;
+        then
+            rm -r Rlibs/build/
+            exit 1
+        fi
     fi
 }
 
 checkRpackages() {
-    cd Rlibs/
-    if [ ! -d build/ ];
+    if [ ! -d Rlibs/build/ ];
     then
-        mkdir build/
+        mkdir Rlibs/build/
         buildRpackages
     fi
-    cd ..
 }
 
 checkAndBuildRpackages() {
@@ -44,8 +62,26 @@ runOMS() {
         -r $1
 }
 
+##############################################################################
+###
+### MAIN
+###
+##############################################################################
+
+trap 'abort' 0
+
 cd work/
 
 buildOMSprj
 checkAndBuildRpackages
 runOMS $1
+
+trap : 0
+
+echo >&2 '
+************
+*** DONE ***
+************
+'
+
+exit

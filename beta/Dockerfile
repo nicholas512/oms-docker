@@ -2,7 +2,8 @@ FROM ubuntu:zesty
 
 MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid@colostate.edu>
 
-COPY oms-3.5.26-console.zip entrypoint.sh ./
+# copy OMS console, entrypoint.sh, packageParser.py and package.json into the container
+COPY oms-3.5.26-console.zip entrypoint.sh packageParser.py package.json ./
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 ENV simulation /work/simulation/Simulation.sim
@@ -30,16 +31,25 @@ RUN set -x \
             r-base \
             libblas-dev \
             liblapack-dev \
+            libgdal-dev \
+            libproj-dev \
+            lynx \
         \
         # install setuptools wheel and jep python packages
         && pip2 install setuptools \
         && pip2 install wheel \
         && pip2 install jep==3.6.4 \
         \
-        && wget https://cran.r-project.org/src/contrib/Rserve_1.7-3.tar.gz \
-        && wget https://cran.r-project.org/src/contrib/Rcpp_0.12.12.tar.gz \
-        && R CMD INSTALL Rserve_1.7-3.tar.gz \
-        && R CMD INSTALL Rcpp_0.12.12.tar.gz \
+        # get latest version of Rserve and Rcpp, then install them
+        && CRAN="https://cran.r-project.org/src/contrib/" \
+        && RSERVE=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/Rserve_/p' ) \
+        && wget $RSERVE \
+        && RCPP=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/Rcpp_/p' ) \
+        && wget $RCPP \
+        && R CMD INSTALL Rserve_*.tar.gz \
+        && R CMD INSTALL Rcpp_*.tar.gz \
+        && rm Rserve_*.tar.gz Rcpp_*.tar.gz \
+        \
         # oms set up
         && unzip oms-3.5.26-console.zip \
         && rm oms-3.5.26-console.zip \

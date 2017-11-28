@@ -15,6 +15,13 @@ buildOMSprj() {
     if [ ! -d build/ ];
     then
         ant all
+        rc=$?
+        if [[ rc -ne 0 ]];
+        then
+            rm -r build/
+            echo "ERROR: OMS project not built";
+            exit $rc
+        fi
     fi
 }
 
@@ -31,10 +38,14 @@ buildRpackages() {
         echo "ERROR: package.json not found. Template provided"
         exit 1
     else
-        if ! python2 /packageParser.py;
+        trap "rm -rf Rlibs/build/; exit" INT TERM EXIT
+        python2 /packageParser.py
+        rc=$?
+        trap - INT TERM EXIT
+        if [[ rc -ne 0 ]];
         then
             rm -r Rlibs/build/
-            exit 1
+            exit $rc
         fi
     fi
 }
@@ -58,7 +69,7 @@ checkAndBuildRpackages() {
 runOMS() {
     java -Xmx12288M \
         -Doms3.work=/work \
-        -cp ".:/root/.oms/3.5.27/oms-all.jar:lib/*:dist/*" oms3.CLI \
+        -cp ".:/root/.oms/3.5.29/oms-all.jar:lib/*:dist/*" oms3.CLI \
         -r $1
 }
 

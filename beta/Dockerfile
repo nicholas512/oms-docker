@@ -3,7 +3,7 @@ FROM ubuntu:zesty
 MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid@colostate.edu>
 
 # copy OMS console, entrypoint.sh, packageParser.py and package.json into the container
-COPY oms-3.5.29-console.zip entrypoint.sh packageParser.py package.json ./
+COPY oms-3.5.38-console.zip entrypoint.sh packageParser.py package.json ./
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 ENV simulation /work/simulation/Simulation.sim
@@ -52,14 +52,14 @@ RUN set -x \
         && rm Rserve_*.tar.gz Rcpp_*.tar.gz \
         \
         # oms set up
-        && unzip oms-3.5.29-console.zip \
-        && rm oms-3.5.29-console.zip \
-        && mkdir -p /root/.oms/3.5.29/ \
-        && cp oms-3.5.29-console/lib/cpptasks-1.0b6-od.jar /root/.oms/3.5.29/ \
-        && cp oms-3.5.29-console/lib/groovy-all-2.3.9.jar /root/.oms/3.5.29/ \
-        && cp oms-3.5.29-console/lib/jcommon-1.0.15.jar /root/.oms/3.5.29/ \
-        && cp oms-3.5.29-console/lib/jfreechart-1.0.12.jar /root/.oms/3.5.29/ \
-        && cp oms-3.5.29-console/lib/oms-all.jar /root/.oms/3.5.29/ \
+        && unzip oms-3.5.38-console.zip \
+        && rm oms-3.5.38-console.zip \
+        && mkdir -p /root/.oms/3.5.38/ \
+        && cp oms-3.5.38-console/lib/cpptasks-1.0b6-od.jar /root/.oms/3.5.38/ \
+        && cp oms-3.5.38-console/lib/groovy-all-2.3.9.jar /root/.oms/3.5.38/ \
+        && cp oms-3.5.38-console/lib/jcommon-1.0.15.jar /root/.oms/3.5.38/ \
+        && cp oms-3.5.38-console/lib/jfreechart-1.0.12.jar /root/.oms/3.5.38/ \
+        && cp oms-3.5.38-console/lib/oms-all.jar /root/.oms/3.5.38/ \
         \
         && mkdir /work \
         && chmod +x /entrypoint.sh

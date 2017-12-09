@@ -69,7 +69,7 @@ checkAndBuildRpackages() {
 runOMS() {
     java -Xmx12288M \
         -Doms3.work=/work \
-        -cp ".:/root/.oms/3.5.29/oms-all.jar:lib/*:dist/*" oms3.CLI \
+        -cp ".:/root/.oms/3.5.38/oms-all.jar:lib/*:dist/*" oms3.CLI \
         -r $1
 }
 

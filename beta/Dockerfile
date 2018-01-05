@@ -4,11 +4,12 @@ MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid
 
 # copy OMS console, entrypoint.sh, packageParser.py and package.json into the container
 COPY oms-3.5.38-console.zip entrypoint.sh packageParser.py package.json ./
+COPY bash_script/ ./bash_script/
 
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
-ENV simulation /work/simulation/Simulation.sim
-ENV LD_LIBRARY_PATH /usr/local/lib/python2.7/dist-packages/jep
-ENV R_LIBS /work/Rlibs/build/
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ \
+      simulation=/work/simulation/Simulation.sim \
+      LD_LIBRARY_PATH=/usr/local/lib/python2.7/dist-packages/jep \
+      R_LIBS=/work/Rlibs/build/
 
 RUN set -x \
         \

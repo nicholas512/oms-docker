@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# it exits the script if there are uninitialised variables
+set -o nounset
+
+# it exits the script if any statement returns a non-true value
+set -o errexit
+
 abort() {
     echo >&2 '
 ***************
@@ -11,68 +17,6 @@ abort() {
     exit 1
 }
 
-buildOMSprj() {
-    if [ ! -d build/ ];
-    then
-        ant all
-        rc=$?
-        if [[ rc -ne 0 ]];
-        then
-            rm -r build/
-            echo "ERROR: OMS project not built";
-            exit $rc
-        fi
-    fi
-}
-
-buildRpackages() {
-    if [ ! -d Rlibs/source/ ];
-    then
-       rm -r Rlibs/build/
-       echo "ERROR: source folder and R packages not found"
-       exit 1
-    elif [ ! -e Rlibs/package.json ];
-    then
-        rm -r Rlibs/build/
-        cp /package.json Rlibs/
-        echo "ERROR: package.json not found. Template provided"
-        exit 1
-    else
-        trap "rm -rf Rlibs/build/; exit" INT TERM EXIT
-        python2 /packageParser.py
-        rc=$?
-        trap - INT TERM EXIT
-        if [[ rc -ne 0 ]];
-        then
-            rm -r Rlibs/build/
-            exit $rc
-        fi
-    fi
-}
-
-checkRpackages() {
-    if [ ! -d Rlibs/build/ ];
-    then
-        mkdir Rlibs/build/
-        buildRpackages
-    fi
-}
-
-checkAndBuildRpackages() {
-    if [ -d Rlibs/ ];
-    then
-        checkRpackages
-    fi
-
-}
-
-runOMS() {
-    java -Xmx12288M \
-        -Doms3.work=/work \
-        -cp ".:/root/.oms/3.5.38/oms-all.jar:lib/*:dist/*" oms3.CLI \
-        -r $1
-}
-
 ##############################################################################
 ###
 ### MAIN
@@ -81,11 +25,9 @@ runOMS() {
 
 trap 'abort' 0
 
-cd work/
-
-buildOMSprj
-checkAndBuildRpackages
-runOMS $1
+sh bash_script/buildOMSprj.sh
+sh bash_script/checkBuildRpackages.sh
+sh bash_script/runOMS.sh $1
 
 trap : 0
 

@@ -53,11 +53,11 @@ To run OMS, open a terminal and change into the [ex01][] folder.
 
 Copy and paste the following command. This should work on all platforms. 
 
-```$ docker run --rm -v $(pwd):/work omslab/oms:beta simulation/Simulation.sim```
+```$ docker run --rm -it -v $(pwd):/work omslab/oms:beta simulation/Simulation.sim```
 
 The following command works for Windows users
 
-```$ docker run --rm -v C:\<full_path>\<project>:/work omslab/oms:beta simulation/Simulation.sim```
+```$ docker run --rm -it -v C:\<full_path>\<project>:/work omslab/oms:beta simulation/Simulation.sim```
 
 Options:
 
@@ -74,7 +74,7 @@ The command above will automatically download the **latest** Docker image of OMS
 
 To run a specific version of OMS, just add ```:<tag>``` to the image name.
 
-```$ docker run --rm -v $(pwd):/work omslab/oms:beta simulation/Simulation.sim```
+```$ docker run --rm -it -v $(pwd):/work omslab/oms:beta simulation/Simulation.sim```
 
 
 ## Output
@@ -82,7 +82,7 @@ To run a specific version of OMS, just add ```:<tag>``` to the image name.
 The following output shows the first time output of the OMS run for [ex01][] example:
 
 ```
-$ docker run --rm -v $(pwd):/work omslab/oms simulation/Simulation.sim
+$ docker run --rm -it -v $(pwd):/work omslab/oms simulation/Simulation.sim
 
 Buildfile: /work/build.xml
 
@@ -122,7 +122,7 @@ $ _
 Further times output is going to be:
 
 ```
-$ docker run --rm -v $(pwd):/work omslab/oms simulation/Simulation.sim
+$ docker run --rm -it -v $(pwd):/work omslab/oms simulation/Simulation.sim
 
 
 Hello World  ...
@@ -138,7 +138,7 @@ To include an R OMS compliant component in your modeling solution, you have to c
 If you get the following error
 
 ```
-$ docker run --rm -v $(pwd):/work omslab/oms simulation/Simulation.sim
+$ docker run --rm -it -v $(pwd):/work omslab/oms simulation/Simulation.sim
 
 Buildfile: /work/build.xml
 
@@ -171,7 +171,7 @@ Following a summary of the steps to take for installing and running GEOtop.
 3. Open a terminal and change into the [ex01][] directory:
    ```$ cd ex01```
 4. Run the OMS Docker image:
-   ```$ docker run --rm  -v $(pwd):/work omslab/oms simulation/ex00_HelloWorld.sim```
+   ```$ docker run --rm -it -v $(pwd):/work omslab/oms simulation/ex00_HelloWorld.sim```
 
 
 # Feedback

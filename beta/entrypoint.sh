@@ -7,12 +7,13 @@ set -o nounset
 set -o errexit
 
 abort() {
-    echo >&2 '
-***************
-*** ABORTED ***
-***************
-'
+    echo >&2 "
+*********************************
+***          ABORTED          ***
+*********************************
+"
     echo "An error occured. Exiting..." >&2
+    echo "OMS version: $OMS_VERSION"
 
     exit 1
 }

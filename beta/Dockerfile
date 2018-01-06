@@ -2,14 +2,15 @@ FROM ubuntu:zesty
 
 MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid@colostate.edu>
 
-# copy OMS console, entrypoint.sh, packageParser.py and package.json into the container
-COPY oms-3.5.38-console.zip entrypoint.sh packageParser.py package.json ./
-COPY bash_script/ ./bash_script/
-
+ENV OMS_VERSION="3.5.38"
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ \
       simulation=/work/simulation/Simulation.sim \
       LD_LIBRARY_PATH=/usr/local/lib/python2.7/dist-packages/jep \
-      R_LIBS=/work/Rlibs/build/
+      R_LIBS=/work/Rlibs/build/ OMS_CONSOLE="oms-$OMS_VERSION-console"
+
+# copy OMS console, entrypoint.sh, packageParser.py and package.json into the container
+COPY $OMS_CONSOLE.zip entrypoint.sh packageParser.py package.json ./
+COPY bash_script/ ./bash_script/
 
 RUN set -x \
         \
@@ -53,14 +54,14 @@ RUN set -x \
         && rm Rserve_*.tar.gz Rcpp_*.tar.gz \
         \
         # oms set up
-        && unzip oms-3.5.38-console.zip \
-        && rm oms-3.5.38-console.zip \
-        && mkdir -p /root/.oms/3.5.38/ \
-        && cp oms-3.5.38-console/lib/cpptasks-1.0b6-od.jar /root/.oms/3.5.38/ \
-        && cp oms-3.5.38-console/lib/groovy-all-2.3.9.jar /root/.oms/3.5.38/ \
-        && cp oms-3.5.38-console/lib/jcommon-1.0.15.jar /root/.oms/3.5.38/ \
-        && cp oms-3.5.38-console/lib/jfreechart-1.0.12.jar /root/.oms/3.5.38/ \
-        && cp oms-3.5.38-console/lib/oms-all.jar /root/.oms/3.5.38/ \
+        && unzip $OMS_CONSOLE.zip \
+        && rm $OMS_CONSOLE.zip \
+        && mkdir -p /root/.oms/$OMS_VERSION/ \
+        && cp $OMS_CONSOLE/lib/cpptasks-1.0b6-od.jar /root/.oms/$OMS_VERSION/ \
+        && cp $OMS_CONSOLE/lib/groovy-all-2.3.9.jar /root/.oms/$OMS_VERSION/ \
+        && cp $OMS_CONSOLE/lib/jcommon-1.0.15.jar /root/.oms/$OMS_VERSION/ \
+        && cp $OMS_CONSOLE/lib/jfreechart-1.0.12.jar /root/.oms/$OMS_VERSION/ \
+        && cp $OMS_CONSOLE/lib/oms-all.jar /root/.oms/$OMS_VERSION/ \
         \
         && mkdir /work \
         && chmod +x /entrypoint.sh

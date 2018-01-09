@@ -9,7 +9,7 @@ set -o errexit
 abort() {
     echo >&2 "
 *********************************
-***          ABORTED          ***
+***     SIMULATION ABORTED    ***
 *********************************
 "
     echo "An error occured. Exiting..." >&2
@@ -33,9 +33,9 @@ sh bash_script/runOMS.sh $1
 trap : 0
 
 echo >&2 '
-************
-*** DONE ***
-************
+*********************************
+***     END OF SIMULATION     ***
+*********************************
 '
 
 exit

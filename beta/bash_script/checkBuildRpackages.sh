@@ -22,7 +22,15 @@ then
         mkdir Rlibs/build/
         if [ ! -d Rlibs/source/ ];
         then
-            abort "ERROR: source folder and R packages not found"
+            if [ ! -e Rlibs/package.txt ];
+            then
+                abort "ERROR: source folder and R packages not found"
+            else
+                mkdir Rlibs/source/
+                trap 'abort "ERROR: problems building R packages"' 0 INT TERM
+                Rscript /rdep.R
+                trap : 0 INT TERM
+            fi
         elif [ ! -e Rlibs/package.json ];
         then
             cp /package.json Rlibs/

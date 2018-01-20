@@ -1,4 +1,4 @@
-FROM ubuntu:zesty
+FROM ubuntu:artful
 
 MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid@colostate.edu>
 
@@ -9,7 +9,7 @@ ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ \
       R_LIBS=/work/Rlibs/build/ OMS_CONSOLE="oms-$OMS_VERSION-console"
 
 # copy OMS console, entrypoint.sh, packageParser.py and package.json into the container
-COPY $OMS_CONSOLE.zip entrypoint.sh packageParser.py package.json ./
+COPY $OMS_CONSOLE.zip entrypoint.sh packageParser.py package.json rdep.R ./
 COPY bash_script/ ./bash_script/
 
 RUN set -x \
@@ -37,6 +37,7 @@ RUN set -x \
             libproj-dev \
             lynx \
             libssl-dev \
+            libcurl4-gnutls-dev \
         \
         # install setuptools wheel and jep python packages
         && pip2 install setuptools \
@@ -45,13 +46,66 @@ RUN set -x \
         \
         # get latest version of Rserve and Rcpp, then install them
         && CRAN="https://cran.r-project.org/src/contrib/" \
+        && PKGCONFIG=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/pkgconfig_/p' ) \
+        && wget $PKGCONFIG \
+        && R CMD INSTALL pkgconfig_*.tar.gz \
+        && rm pkgconfig_*.tar.gz \
+        && MATRIX=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/Matrix_/p' ) \
+        && wget $MATRIX \
+        && R CMD INSTALL Matrix_*.tar.gz \
+        && rm Matrix_*.tar.gz \
+        && MAGRITTR=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/magrittr_/p' ) \
+        && wget $MAGRITTR \
+        && R CMD INSTALL magrittr_*.tar.gz \
+        && rm magrittr_*.tar.gz \
+        && IRLBA=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/irlba_/p' ) \
+        && wget $IRLBA \
+        && R CMD INSTALL irlba_*.tar.gz \
+        && rm irlba_*.tar.gz \
+        && R6=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/R6_/p' ) \
+        && wget $R6 \
+        && R CMD INSTALL R6_*.tar.gz \
+        && rm R6_*.tar.gz \
+        && OPENSSL=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/openssl_/p' ) \
+        && wget $OPENSSL \
+        && R CMD INSTALL openssl_*.tar.gz \
+        && rm openssl_*.tar.gz \
+        && CURL=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/curl_/p' ) \
+        && wget $CURL \
+        && R CMD INSTALL curl_*.tar.gz \
+        && rm curl_*.tar.gz \
+        && MIME=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/mime_/p' ) \
+        && wget $MIME \
+        && R CMD INSTALL mime_*.tar.gz \
+        && rm mime_*.tar.gz \
+        && JSONLITE=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/jsonlite_/p' ) \
+        && wget $JSONLITE \
+        && R CMD INSTALL jsonlite_*.tar.gz \
+        && rm jsonlite_*.tar.gz \
+        && IGRAPH=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/igraph_/p' ) \
+        && wget $IGRAPH \
+        && R CMD INSTALL igraph_*.tar.gz \
+        && rm igraph_*.tar.gz \
+        && XML=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/XML_/p' ) \
+        && wget $XML\
+        && R CMD INSTALL XML_*.tar.gz \
+        && rm XML_*.tar.gz \
+        && HTTR=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/httr_/p' ) \
+        && wget $HTTR\
+        && R CMD INSTALL httr_*.tar.gz \
+        && rm httr_*.tar.gz \
+        && MINICRAN=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/miniCRAN_/p' ) \
+        && wget $MINICRAN \
+        && R CMD INSTALL miniCRAN_*.tar.gz \
+        && rm miniCRAN_*.tar.gz \
         && RSERVE=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/Rserve_/p' ) \
         && wget $RSERVE \
+        && R CMD INSTALL Rserve_*.tar.gz \
+        && rm Rserve_*.tar.gz \
         && RCPP=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/Rcpp_/p' ) \
         && wget $RCPP \
-        && R CMD INSTALL Rserve_*.tar.gz \
         && R CMD INSTALL Rcpp_*.tar.gz \
-        && rm Rserve_*.tar.gz Rcpp_*.tar.gz \
+        && rm Rcpp_*.tar.gz \
         \
         # oms set up
         && unzip $OMS_CONSOLE.zip \

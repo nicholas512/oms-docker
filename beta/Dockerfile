@@ -9,7 +9,8 @@ ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ \
       R_LIBS=/work/Rlibs/build/ OMS_CONSOLE="oms-$OMS_VERSION-console"
 
 # copy OMS console, entrypoint.sh, packageParser.py and package.json into the container
-COPY $OMS_CONSOLE.zip entrypoint.sh packageParser.py package.json rdep.R ./
+COPY $OMS_CONSOLE.zip entrypoint.sh ./
+COPY rdep.R /usr/bin/
 COPY bash_script/ ./bash_script/
 
 RUN set -x \

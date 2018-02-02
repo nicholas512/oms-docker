@@ -28,16 +28,12 @@ then
             else
                 mkdir Rlibs/source/
                 trap 'abort "ERROR: problems building R packages"' 0 INT TERM
-                Rscript /rdep.R
+                rdep.R di
                 trap : 0 INT TERM
             fi
-        elif [ ! -e Rlibs/package.json ];
-        then
-            cp /package.json Rlibs/
-            abort "ERROR: package.json not found. Template provided"
         else
             trap 'abort "ERROR: problems building R packages"' 0 INT TERM
-            python2 /packageParser.py
+            rdep.R i
             trap : 0 INT TERM
         fi
     fi

@@ -1,6 +1,6 @@
 # Supported tags and respective ```Dockerfile``` links
 * (beta) *[```beta```, (beta/Dockerfile)][]*
-* (0.1) *[```0.1```, (0.1/Dockerfile)][]*
+* (0.1_py2) *[```0.1_py2```, (0.1_py2/Dockerfile)][]*
 
 # OMS (Object Modeling System)
 
@@ -193,7 +193,7 @@ Ahuja, L. R., Ii, J. A., & David, O. (2005). [Developing natural resource models
 Kralisch, S., Krause, P., & David, O. (2005). [Using the object modeling system for hydrological model development and application][]. Advances in Geosciences, 4, 75-81.
 
 [```beta```, (beta/Dockerfile)]: https://github.com/sidereus3/oms-docker/blob/master/beta/Dockerfile
-[```0.1```, (0.1/Dockerfile)]: https://github.com/sidereus3/oms-docker/blob/master/0.1/Dockerfile
+[```0.1_py2```, (0.1_py2/Dockerfile)]: https://github.com/sidereus3/oms-docker/blob/master/0.1_py2/Dockerfile
 [https://alm.engr.colostate.edu/cb/wiki/16961]: https://alm.engr.colostate.edu/cb/wiki/16961
 [http://oms.colostate.edu/]: http://oms.colostate.edu/
 [GNU/Linux]: https://docs.docker.com/engine/installation/

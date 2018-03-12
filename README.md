@@ -1,6 +1,7 @@
 # Supported tags and respective ```Dockerfile``` links
 * (beta) *[```beta```, (beta/Dockerfile)][]*
 * (0.1_py2) *[```0.1_py2```, (0.1_py2/Dockerfile)][]*
+* (0.1_py3) *[```0.1_py3```, (0.1_py3/Dockerfile)][]*
 
 # OMS (Object Modeling System)
 
@@ -13,7 +14,7 @@ It is lightweight, open, less invasive and more flexible than other environmenta
 
 This image packages the OMS framework and following features:
 
-* Python binding (for python 2)
+* Python binding (```*_py2``` for python 2, ```*_py3``` for python 3)
 * R binding
 
 Its availability makes running OMS and related features much easier on every box. No linking and environment variables set up are required anymore.
@@ -194,6 +195,7 @@ Kralisch, S., Krause, P., & David, O. (2005). [Using the object modeling system 
 
 [```beta```, (beta/Dockerfile)]: https://github.com/sidereus3/oms-docker/blob/master/beta/Dockerfile
 [```0.1_py2```, (0.1_py2/Dockerfile)]: https://github.com/sidereus3/oms-docker/blob/master/0.1_py2/Dockerfile
+[```0.1_py3```, (0.1_py3/Dockerfile)]: https://github.com/sidereus3/oms-docker/blob/master/0.1_py3/Dockerfile
 [https://alm.engr.colostate.edu/cb/wiki/16961]: https://alm.engr.colostate.edu/cb/wiki/16961
 [http://oms.colostate.edu/]: http://oms.colostate.edu/
 [GNU/Linux]: https://docs.docker.com/engine/installation/

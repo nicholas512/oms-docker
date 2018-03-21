@@ -5,7 +5,7 @@ MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid
 ENV OMS_VERSION="3.5.46"
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ \
       simulation=/work/simulation/Simulation.sim \
-      LD_LIBRARY_PATH=/usr/local/lib/python3.6/dist-packages/jep \
+      LD_LIBRARY_PATH=/usr/local/lib/python3/dist-packages/jep \
       R_LIBS=/work/Rlibs/build/ OMS_CONSOLE="oms-$OMS_VERSION-console"
 
 # copy OMS console, entrypoint.sh, packageParser.py and package.json into the container
@@ -27,10 +27,9 @@ RUN set -x \
             gfortran \
             make \
             unzip \
-            python-dev \
+            python3-dev \
             openjdk-8-jdk \
             ant \
-            python-pip \
             r-base \
             libblas-dev \
             liblapack-dev \
@@ -39,6 +38,7 @@ RUN set -x \
             lynx \
             libssl-dev \
             libcurl4-gnutls-dev \
+            python3-pip \
         \
         # install setuptools wheel and jep python packages
         && pip3 install setuptools \

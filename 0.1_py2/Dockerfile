@@ -6,7 +6,9 @@ ENV OMS_VERSION="3.5.52"
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ \
       simulation=/work/simulation/Simulation.sim \
       LD_LIBRARY_PATH=/usr/local/lib/python2.7/dist-packages/jep \
-      R_LIBS=/work/Rlibs/build/ OMS_CONSOLE="oms-$OMS_VERSION-console"
+      R_LIBS=/work/Rlibs/build/ \
+      PYTHONPATH=$PYTHONPATH:/work/Pylibs/ \
+      OMS_CONSOLE="oms-$OMS_VERSION-console"
 
 # copy OMS console, entrypoint.sh, packageParser.py and package.json into the container
 COPY $OMS_CONSOLE.zip entrypoint.sh ./

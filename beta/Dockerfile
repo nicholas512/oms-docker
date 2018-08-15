@@ -45,7 +45,7 @@ RUN set -x \
         # install setuptools wheel and jep python packages
         && pip2 install setuptools \
         && pip2 install wheel \
-        && pip2 install jep==3.6.4 \
+        && pip2 install jep==3.8.2 \
         \
         # get latest version of Rserve and Rcpp, then install them
         && CRAN="https://cran.r-project.org/src/contrib/" \

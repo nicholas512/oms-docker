@@ -5,24 +5,33 @@ set -o errexit
 # set -o errtrace
 
 abort() {
+    if [ -d Rlibs/source/ ];
+    then
+        if [ -z "$(ls -A Rlibs/source/)" ]; # @TODO: this should check if every package has been downloaded
+        then
+            rm -r Rlibs/source/
+        fi
+    fi
+
     if [ -d Rlibs/build/ ];
     then
         rm -r Rlibs/build/
     fi
+
     echo $1
     exit 1
 }
 
 cd work
 
-if [ -d Rlibs/ ];
+if [ -d Rlibs/ ]; # R dependencies to download
 then
-    if [ ! -d Rlibs/build/ ];
+    if [ ! -d Rlibs/build/ ]; # Packages not build yet
     then
         mkdir Rlibs/build/
-        if [ ! -d Rlibs/source/ ];
+        if [ ! -d Rlibs/source/ ]; # Packages not downloaded yet
         then
-            if [ ! -e Rlibs/package.txt ];
+            if [ ! -e Rlibs/package.txt ]; # No list of packages available
             then
                 abort "ERROR: source folder and R packages not found"
             else

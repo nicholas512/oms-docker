@@ -7,7 +7,7 @@ set -o errexit
 abort() {
     if [ -d Rlibs/source/ ];
     then
-        if [ -z "$(ls -A Rlibs/source/)" ]; # @TODO: this should check if every package has been downloaded
+        if [ -z "$(ls -A Rlibs/source/)" ] || [ -z "$(ls -A Rlibs/source/src/contrib)" ]; # @TODO: this should check if every package has been downloaded
         then
             rm -r Rlibs/source/
         fi

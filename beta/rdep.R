@@ -5,6 +5,8 @@ library(miniCRAN)
 library(parallel)
 
 download <- function(tags) {
+    print("Downloading R packages...")
+    print("This may take a while, depending upon R servers responsiveness")
     country.code <- 'us'  # use yours
     url.pattern <- 'https://'  # use http if you want
     repo.data.frame <- subset(getCRANmirrors(), CountryCode == country.code & grepl(url.pattern, URL))
@@ -15,6 +17,7 @@ download <- function(tags) {
 }
 
 install <- function(tags) {
+    print("Installing R packages")
     cores <- detectCores()
     for (i in 1:length(tags)) {
         install.packages(paste(tags[i]), repos=file.path("file://","/work/Rlibs/source"), type="source", lib="/work/Rlibs/build", Ncpus=getOption("Ncpus", cores))
@@ -26,6 +29,7 @@ if (length(args)==0) {
 }
 
 instruction <- args[1]
+print("Reading in list of packages")
 packages <- read.table("/work/Rlibs/package.txt")
 tags <- as.vector(unlist(packages))
 

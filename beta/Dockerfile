@@ -1,9 +1,10 @@
-FROM ubuntu:artful
+FROM ubuntu:bionic
 
 MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid@colostate.edu>
 
 ENV OMS_VERSION="3.5.59"
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ \
+ENV JAVA_VERSION="11"
+ENV JAVA_HOME=/usr/lib/jvm/java-"$JAVA_VERSION"-openjdk-amd64/ \
       simulation=/work/simulation/Simulation.sim \
       LD_LIBRARY_PATH=/usr/local/lib/python2.7/dist-packages/jep \
       R_LIBS=/work/Rlibs/build/ \
@@ -20,7 +21,7 @@ RUN set -x \
         && apt-get -y update \
         \
         # installation of required packages
-        && apt-get install --no-install-recommends -y \
+        && DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
             ca-certificates \
             wget \
             binutils \
@@ -30,7 +31,7 @@ RUN set -x \
             make \
             unzip \
             python-dev \
-            openjdk-8-jdk \
+            openjdk-"$JAVA_VERSION"-jdk \
             ant \
             python-pip \
             r-base \

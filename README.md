@@ -55,11 +55,11 @@ To run OMS, open a terminal and change into the [ex01][] folder.
 
 Copy and paste the following command. This should work on all platforms. 
 
-```$ docker run --rm -it -v $(pwd):/work omslab/oms:beta simulation/Simulation.sim```
+```$ docker run --rm -it -v $(pwd):/work omslab/oms:beta simulation/ex00_HelloWorld.sim```
 
 The following command works for Windows users
 
-```$ docker run --rm -it -v C:\<full_path>\<project>:/work omslab/oms:beta simulation/Simulation.sim```
+```$ docker run --rm -it -v C:\<full_path>\<project>:/work omslab/oms:beta simulation/ex00_HelloWorld.sim```
 
 Options:
 
@@ -69,14 +69,14 @@ Options:
   for OMS.
 * ```omslab/oms```: this is the image name ```<organization_name>/<image_name>```
   to run.
-* ```simulation/Simulation.sim```: this is the path to sim file you want to run
+* ```simulation/ex00_HelloWorld.sim```: this is the path to sim file you want to run
 
 The command above will automatically download the **latest** Docker image of OMS from DockerHub (the download is required just for the very first time) and run it. Next time you invoke the ```run``` command, OMS will just simply start on your machine.
 
 
 To run a specific version of OMS, just add ```:<tag>``` to the image name.
 
-```$ docker run --rm -it -v $(pwd):/work omslab/oms:beta simulation/Simulation.sim```
+```$ docker run --rm -it -v $(pwd):/work omslab/oms:beta simulation/ex00_HelloWorld.sim```
 
 
 ## Output
@@ -84,7 +84,7 @@ To run a specific version of OMS, just add ```:<tag>``` to the image name.
 The following output shows the first time output of the OMS run for [ex01][] example:
 
 ```
-$ docker run --rm -it -v $(pwd):/work omslab/oms simulation/Simulation.sim
+$ docker run --rm -it -v $(pwd):/work omslab/oms simulation/ex00_HelloWorld.sim
 
 Buildfile: /work/build.xml
 
@@ -124,7 +124,7 @@ $ _
 Further times output is going to be:
 
 ```
-$ docker run --rm -it -v $(pwd):/work omslab/oms simulation/Simulation.sim
+$ docker run --rm -it -v $(pwd):/work omslab/oms simulation/ex00_HelloWorld.sim
 
 
 Hello World  ...
@@ -137,10 +137,10 @@ To include an R OMS compliant component in your modeling solution, you have to c
 
 ## Building error
 
-If you get the following error
+If you get a similar error
 
 ```
-$ docker run --rm -it -v $(pwd):/work omslab/oms simulation/Simulation.sim
+$ docker run --rm -it -v $(pwd):/work omslab/oms simulation/ex00_HelloWorld.sim
 
 Buildfile: /work/build.xml
 
@@ -149,11 +149,18 @@ BUILD FAILED
 /work/.oms/project.xml:65: /root/.oms/3.5.25 does not exist.
 
 Total time: 0 seconds
+ERROR: OMS project not built
 
->>>> Error: Class not found: `ex00.Component`
+*********************************
+***     SIMULATION ABORTED    ***
+*********************************
+
+An error occured. Exiting...
+OMS version: 3.5.59
 $_
 ```
-open the file ```.oms/project.properties``` (the .oms/ folder is a hidden folder in the OMS project) and change the flag at line 14 ```oms.version``` to ```3.5.26``` (the OMS version bundled into the Docker image)
+check the last line printed out by the Docker image (```OMS version: 3.5.59``` in this example).
+Open the file ```.oms/project.properties``` (the .oms/ folder is a hidden folder in the OMS project) and change the flag at line 14 ```oms.version``` to ```3.5.59```. The latter is the OMS version bundled in the Docker image.
 
 # Supported Docker versions
 

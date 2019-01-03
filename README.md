@@ -3,6 +3,11 @@
 * (0.1_py2) *[```0.1_py2```, (0.1_py2/Dockerfile)][]*
 * (0.1_py3) *[```0.1_py3```, (0.1_py3/Dockerfile)][]*
 
+# Bundled OMS3 version in each Docker image
+* (beta): OMS 3.6.5
+* (0.1_py2): OMS 3.5.52
+* (0.1_py3): OMS 3.5.52
+
 # OMS (Object Modeling System)
 
 The **Object Modeling System** is a framework for designing, building, validating, and deploying agro-environmental models.

@@ -2,7 +2,7 @@ FROM ubuntu:artful
 
 MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid@colostate.edu>
 
-ENV OMS_VERSION="3.5.52"
+ENV OMS_VERSION="3.6.5"
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ \
       simulation=/work/simulation/Simulation.sim \
       LD_LIBRARY_PATH=/usr/local/lib/python3/dist-packages/jep \

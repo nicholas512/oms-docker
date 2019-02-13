@@ -70,6 +70,14 @@ RUN set -x \
         && echo $R6 | awk '{print $1}' | xargs wget \
         && R CMD INSTALL R6_*.tar.gz \
         && rm R6_*.tar.gz \
+        && SYS=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/sys_/p' ) \
+        && echo $SYS | awk '{print $1}' | xargs wget \
+        && R CMD INSTALL sys_*.tar.gz \
+        && rm sys_*.tar.gz \
+        && ASKPASS=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/askpass_/p' ) \
+        && echo $ASKPASS | awk '{print $1}' | xargs wget \
+        && R CMD INSTALL askpass_*.tar.gz \
+        && rm askpass_*.tar.gz \
         && OPENSSL=$( lynx -dump -listonly "${CRAN}" | awk '{print $2}' | sed -n '/\/openssl_/p' ) \
         && echo $OPENSSL | awk '{print $1}' | xargs wget \
         && R CMD INSTALL openssl_*.tar.gz \

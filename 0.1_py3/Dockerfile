@@ -5,7 +5,7 @@ MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid
 ENV OMS_VERSION="3.6.11"
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ \
       simulation=/work/simulation/Simulation.sim \
-      LD_LIBRARY_PATH=/usr/local/lib/python3/dist-packages/jep \
+      LD_LIBRARY_PATH=/usr/local/lib/python3.6/dist-packages/jep \
       R_LIBS=/work/Rlibs/build/ \
       PYTHONPATH=$PYTHONPATH:/work/Pylibs/ \
       OMS_CONSOLE="oms-$OMS_VERSION-console"

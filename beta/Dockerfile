@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:19.04
 
 MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid@colostate.edu>
 

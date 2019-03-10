@@ -8,6 +8,12 @@
 * (0.1_py2): OMS 3.6.11
 * (0.1_py3): OMS 3.6.11
 
+# Bundled JVM version in each Docker image
+* (beta): openjdk-11
+* (0.1_py2): openjdk-8
+* (0.1_py3): openjdk-8
+
+
 # OMS (Object Modeling System)
 
 The **Object Modeling System** is a framework for designing, building, validating, and deploying agro-environmental models.

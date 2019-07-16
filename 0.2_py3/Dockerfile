@@ -2,7 +2,7 @@ FROM ubuntu:bionic
 
 MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid@colostate.edu>
 
-ENV OMS_VERSION="3.6.11"
+ENV OMS_VERSION="3.6.14"
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ \
       simulation=/work/simulation/Simulation.sim \
       LD_LIBRARY_PATH=/usr/local/lib/python3.6/dist-packages/jep \
@@ -44,6 +44,7 @@ RUN set -x \
             libssl-dev \
             libcurl4-gnutls-dev \
             python3-pip \
+            wget \
         \
         # install setuptools wheel and jep python packages
         && pip3 install setuptools \
@@ -53,6 +54,9 @@ RUN set -x \
         && chmod +x install.R \
         && ./install.R \
         # oms set up
+        && wget https://github.com/s-u/Rserve/releases/download/1.8-4/Rserve_1.8-4.tar.gz \
+        && R CMD INSTALL Rserve_1.8-4.tar.gz \
+        && rm Rserve_1.8-4.tar.gz \
         && unzip $OMS_CONSOLE.zip \
         && rm $OMS_CONSOLE.zip \
         && mkdir -p /root/.oms/$OMS_VERSION/ \

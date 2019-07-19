@@ -2,14 +2,14 @@ FROM ubuntu:19.04
 
 MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid@colostate.edu>
 
-ENV OMS_VERSION="3.6.14"
+ENV OMS_VERSION="3.6.15"
 ENV JAVA_VERSION="11"
 ENV JAVA_HOME=/usr/lib/jvm/java-"$JAVA_VERSION"-openjdk-amd64/ \
       simulation=/work/simulation/Simulation.sim \
       LD_LIBRARY_PATH=/usr/local/lib/python2.7/dist-packages/jep \
       R_LIBS=/work/Rlibs/build/ \
       PYTHONPATH=$PYTHONPATH:/work/Pylibs/ \
-      OMS_CONSOLE="oms-$OMS_VERSION-console"
+      OMS_CONSOLE="oms-$OMS_VERSION-console" \
       TZ=US/Mountain
 
 # copy OMS console, entrypoint.sh, packageParser.py and package.json into the container

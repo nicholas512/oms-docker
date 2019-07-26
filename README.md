@@ -14,7 +14,7 @@
 * (beta): openjdk-11
 * (0.1_py2): openjdk-8
 * (0.1_py3): openjdk-8
-* (0.2_py3): openjdk-11
+* (0.2_py3): openjdk-8
 
 
 # OMS (Object Modeling System)

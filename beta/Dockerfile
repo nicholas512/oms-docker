@@ -3,6 +3,7 @@ FROM ubuntu:19.04
 MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid@colostate.edu>
 
 ENV OMS_VERSION="3.6.21"
+ENV Rserve_VERSION="1.8-6" 
 ENV JAVA_VERSION="11"
 ENV JAVA_HOME=/usr/lib/jvm/java-"$JAVA_VERSION"-openjdk-amd64/ \
       simulation=/work/simulation/Simulation.sim \
@@ -52,10 +53,10 @@ RUN set -x \
         \
         && chmod +x install.R \
         && ./install.R \
-        # oms set up
-        && wget https://github.com/s-u/Rserve/releases/download/1.8-4/Rserve_1.8-4.tar.gz \
-        && R CMD INSTALL Rserve_1.8-4.tar.gz \
-        && rm Rserve_1.8-4.tar.gz \
+        # Rserve set up
+        && wget https://www.rforge.net/Rserve/snapshot/Rserve_$Rserve_VERSION.tar.gz \
+        && R CMD INSTALL Rserve_$Rserve_VERSION.tar.gz \
+        && rm Rserve_$Rserve_VERSION.tar.gz \
         \
         # oms set up
         && unzip $OMS_CONSOLE.zip \

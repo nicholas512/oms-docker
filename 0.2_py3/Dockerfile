@@ -3,13 +3,13 @@ FROM ubuntu:bionic
 MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid@colostate.edu>
 
 ENV OMS_VERSION="3.6.14"
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ \
-      simulation=/work/simulation/Simulation.sim \
-      LD_LIBRARY_PATH=/usr/local/lib/python3.6/dist-packages/jep \
-      R_LIBS=/work/Rlibs/build/ \
-      PYTHONPATH=$PYTHONPATH:/work/Pylibs/ \
-      OMS_CONSOLE="oms-$OMS_VERSION-console" \
-      TZ=US/Mountain
+ENV Rserve_VERSION="1.8-6" \
+    simulation=/work/simulation/Simulation.sim \
+    LD_LIBRARY_PATH=/usr/local/lib/python3.6/dist-packages/jep \
+    R_LIBS=/work/Rlibs/build/ \
+    PYTHONPATH=$PYTHONPATH:/work/Pylibs/ \
+    OMS_CONSOLE="oms-$OMS_VERSION-console" \
+    TZ=US/Mountain
 
 # copy OMS console, entrypoint.sh, packageParser.py and package.json into the container
 COPY install.R ./
@@ -53,10 +53,11 @@ RUN set -x \
         \
         && chmod +x install.R \
         && ./install.R \
+        # Rserve set up
+        && wget https://www.rforge.net/Rserve/snapshot/Rserve_$Rserve_VERSION.tar.gz \
+        && R CMD INSTALL Rserve_$Rserve_VERSION.tar.gz \
+        && rm Rserve_$Rserve_VERSION.tar.gz \
         # oms set up
-        && wget https://github.com/s-u/Rserve/releases/download/1.8-4/Rserve_1.8-4.tar.gz \
-        && R CMD INSTALL Rserve_1.8-4.tar.gz \
-        && rm Rserve_1.8-4.tar.gz \
         && unzip $OMS_CONSOLE.zip \
         && rm $OMS_CONSOLE.zip \
         && mkdir -p /root/.oms/$OMS_VERSION/ \

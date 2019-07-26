@@ -4,6 +4,7 @@ MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid
 
 ENV OMS_VERSION="3.6.14"
 ENV Rserve_VERSION="1.8-6" \
+    JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/ \
     simulation=/work/simulation/Simulation.sim \
     LD_LIBRARY_PATH=/usr/local/lib/python3.6/dist-packages/jep \
     R_LIBS=/work/Rlibs/build/ \

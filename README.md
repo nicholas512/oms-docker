@@ -2,18 +2,21 @@
 * (beta) *[```beta```, (beta/Dockerfile)][]*
 * (0.1_py2) *[```0.1_py2```, (0.1_py2/Dockerfile)][]*
 * (0.1_py3) *[```0.1_py3```, (0.1_py3/Dockerfile)][]*
+* (0.2_py2) *[```0.2_py2```, (0.2_py2/Dockerfile)][]*
 * (0.2_py3) *[```0.2_py3```, (0.2_py3/Dockerfile)][]*
 
 # Bundled OMS3 version in each Docker image
 * (beta): OMS 3.6.21
 * (0.1_py2): OMS 3.6.11
 * (0.1_py3): OMS 3.6.11
+* (0.2_py2): OMS 3.6.14
 * (0.2_py3): OMS 3.6.14
 
 # Bundled JVM version in each Docker image
 * (beta): openjdk-11
 * (0.1_py2): openjdk-8
 * (0.1_py3): openjdk-8
+* (0.2_py2): openjdk-8
 * (0.2_py3): openjdk-8
 
 
@@ -210,6 +213,7 @@ Kralisch, S., Krause, P., & David, O. (2005). [Using the object modeling system 
 [```beta```, (beta/Dockerfile)]: https://github.com/sidereus3/oms-docker/blob/master/beta/Dockerfile
 [```0.1_py2```, (0.1_py2/Dockerfile)]: https://github.com/sidereus3/oms-docker/blob/master/0.1_py2/Dockerfile
 [```0.1_py3```, (0.1_py3/Dockerfile)]: https://github.com/sidereus3/oms-docker/blob/master/0.1_py3/Dockerfile
+[```0.2_py2```, (0.2_py2/Dockerfile)]: https://github.com/sidereus3/oms-docker/blob/master/0.2_py2/Dockerfile
 [```0.2_py3```, (0.2_py3/Dockerfile)]: https://github.com/sidereus3/oms-docker/blob/master/0.2_py3/Dockerfile
 [https://alm.engr.colostate.edu/cb/wiki/16961]: https://alm.engr.colostate.edu/cb/wiki/16961
 [http://oms.colostate.edu/]: http://oms.colostate.edu/

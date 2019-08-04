@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid@colostate.edu>
 
-ENV OMS_VERSION="3.6.21"
+ENV OMS_VERSION="3.6.22"
 ENV Rserve_VERSION="1.8-6"
 ENV JAVA_VERSION="11"
 ENV JAVA_HOME=/usr/lib/jvm/java-"$JAVA_VERSION"-openjdk-amd64/ \

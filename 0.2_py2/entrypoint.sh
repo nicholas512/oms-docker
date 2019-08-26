@@ -26,9 +26,11 @@ abort() {
 
 trap 'abort' 0
 
+LOG="${2:-OFF}"
+
 sh bash_script/buildOMSprj.sh
 sh bash_script/checkBuildRpackages.sh
-sh bash_script/runOMS.sh $1
+sh bash_script/runOMS.sh $1 $LOG
 
 trap : 0
 

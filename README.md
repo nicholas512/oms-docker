@@ -5,8 +5,8 @@
 
 # Bundled OMS3 version in each Docker image
 * (beta): OMS 3.6.23
-* (0.2_py2): OMS 3.6.14
-* (0.2_py3): OMS 3.6.14
+* (0.2_py2): OMS 3.6.23
+* (0.2_py3): OMS 3.6.23
 
 # Bundled JVM version in each Docker image
 * (beta): openjdk-11

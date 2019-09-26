@@ -4,9 +4,9 @@
 * (0.2_py3) *[```0.2_py3```, (0.2_py3/Dockerfile)][]*
 
 # Bundled OMS3 version in each Docker image
-* (beta): OMS 3.6.23
-* (0.2_py2): OMS 3.6.23
-* (0.2_py3): OMS 3.6.23
+* (beta): OMS 3.6.24
+* (0.2_py2): OMS 3.6.24
+* (0.2_py3): OMS 3.6.24
 
 # Bundled JVM version in each Docker image
 * (beta): openjdk-11

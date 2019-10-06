@@ -4,7 +4,7 @@
 * (0.2_py3) *[```0.2_py3```, (0.2_py3/Dockerfile)][]*
 
 # Bundled OMS3 version in each Docker image
-* (beta): OMS 3.6.24
+* (beta): OMS 3.6.25
 * (0.2_py2): OMS 3.6.24
 * (0.2_py3): OMS 3.6.24
 

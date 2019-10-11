@@ -4,5 +4,5 @@ install.packages(c("pkgconfig","Matrix","magrittr",
                    "irlba","R6","sys","askpass",
                    "openssl","curl","mime","jsonlite",
                    "igraph","XML","httr","miniCRAN",
-                   "Rcpp"),
+                   "Rcpp", INSTALL_opts=c('--no-lock')),
 repos="http://lib.stat.cmu.edu/R/CRAN")

@@ -9,7 +9,7 @@
 * (0.2_py3): OMS 3.6.24
 
 # Bundled JVM version in each Docker image
-* (beta): openjdk-11
+* (beta): openjdk-13
 * (0.2_py2): openjdk-8
 * (0.2_py3): openjdk-8
 

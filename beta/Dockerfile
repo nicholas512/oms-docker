@@ -4,7 +4,7 @@ MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid
 
 ENV OMS_VERSION="3.6.25"
 ENV Rserve_VERSION="1.8-6"
-ENV JAVA_VERSION="11"
+ENV JAVA_VERSION="13"
 ENV JAVA_HOME=/usr/lib/jvm/java-"$JAVA_VERSION"-openjdk-amd64/ \
       simulation=/work/simulation/Simulation.sim \
       LD_LIBRARY_PATH=/usr/local/lib/python2.7/dist-packages/jep \

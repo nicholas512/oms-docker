@@ -11,6 +11,8 @@ ENV JAVA_HOME=/usr/lib/jvm/java-"$JAVA_VERSION"-openjdk-amd64/ \
       OMS_CONSOLE="oms-$OMS_VERSION-console" \
       TZ=US/Mountain
 
+ARG VCS_REF
+
 LABEL org.label-schema.license="MIT" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.vcs-url="https://github.com/sidereus3/oms-docker" \

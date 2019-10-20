@@ -19,9 +19,9 @@
 * (0.2_py2): openjdk-8
 * (0.2_py3): openjdk-8
 
-image            | dockerfile                          | OMS3 version           | JVM                   | size               | metrics               | build status
+image            | dockerfile                          | OMS3 version           | JVM                   | size               | license               | build status
 ---------------- | ----------------------------------- | ---------------------- | --------------------- | ------------------ | --------------------- | --------------
-beta             | *[```beta```, (beta/Dockerfile)][]* | OMS 3.6.25             | openjdk-13            |                    |                       |
+[![](https://images.microbadger.com/badges/version/omslab/oms:beta.svg)](https://microbadger.com/images/omslab/oms:beta "Get your own version badge on microbadger.com")             | *[```beta```, (beta/Dockerfile)][]* | OMS 3.6.25             | openjdk-13            | [![](https://images.microbadger.com/badges/image/omslab/oms:beta.svg)](https://microbadger.com/images/omslab/oms:beta "Get your own image badge on microbadger.com")                   | [![](https://images.microbadger.com/badges/license/omslab/oms:beta.svg)](https://microbadger.com/images/omslab/oms:beta "Get your own license badge on microbadger.com")                       |
 
 # OMS (Object Modeling System)
 

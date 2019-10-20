@@ -1,13 +1,5 @@
 FROM ubuntu:19.04
 
-LABEL org.label-schema.license="MIT" \
-      org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/sidereus3/oms-docker" \
-      org.label-schema.vendor="OMSlab" \
-      maintainer="Francesco Serafin <francesco.serafin.3@gmail.com>"
-
-MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid@colostate.edu>
-
 ENV OMS_VERSION="3.6.25"
 ENV Rserve_VERSION="1.8-6"
 ENV JAVA_VERSION="13"
@@ -18,6 +10,15 @@ ENV JAVA_HOME=/usr/lib/jvm/java-"$JAVA_VERSION"-openjdk-amd64/ \
       PYTHONPATH=$PYTHONPATH:/work/Pylibs/ \
       OMS_CONSOLE="oms-$OMS_VERSION-console" \
       TZ=US/Mountain
+
+LABEL org.label-schema.license="MIT" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/sidereus3/oms-docker" \
+      org.label-schema.vendor="OMSlab" \
+      org.label-schema.OMS=$OMS_VERSION \
+      maintainer="Francesco Serafin <francesco.serafin.3@gmail.com>"
+
+MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid@colostate.edu>
 
 # copy OMS console, entrypoint.sh, packageParser.py and package.json into the container
 COPY install.R ./

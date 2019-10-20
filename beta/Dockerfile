@@ -1,5 +1,11 @@
 FROM ubuntu:19.04
 
+LABEL org.label-schema.license="MIT" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/sidereus3/oms-docker" \
+      org.label-schema.vendor="OMSlab" \
+      maintainer="Francesco Serafin <francesco.serafin.3@gmail.com>"
+
 MAINTAINER Francesco Serafin <francesco.serafin.3@gmail.com>, Olaf David <odavid@colostate.edu>
 
 ENV OMS_VERSION="3.6.25"

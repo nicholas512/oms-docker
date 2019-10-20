@@ -19,6 +19,9 @@
 * (0.2_py2): openjdk-8
 * (0.2_py3): openjdk-8
 
+image            | dockerfile                          | OMS3 version           | JVM                   | size               | metrics               | build status
+---------------- | ----------------------------------- | ---------------------- | --------------------- | ------------------ | --------------------- | --------------
+beta             | *[```beta```, (beta/Dockerfile)][]* | OMS 3.6.25             | openjdk-13            |                    |                       |
 
 # OMS (Object Modeling System)
 

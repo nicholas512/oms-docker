@@ -1,7 +1,8 @@
 FROM ubuntu:19.04
 
-ENV OMS_VERSION="3.6.25"
+ENV OMS_VERSION="3.6.26"
 ENV Rserve_VERSION="1.8-6"
+ENV Jep_VERSION="3.9.0"
 ENV JAVA_VERSION="13"
 ENV JAVA_HOME=/usr/lib/jvm/java-"$JAVA_VERSION"-openjdk-amd64/ \
       simulation=/work/simulation/Simulation.sim \
@@ -58,7 +59,7 @@ RUN set -x \
         # install setuptools wheel and jep python packages
         && pip2 install setuptools \
         && pip2 install wheel \
-        && pip2 install jep==3.8.2 \
+        && pip2 install jep==$Jep_VERSION \
         \
         && chmod +x install.R \
         && ./install.R \

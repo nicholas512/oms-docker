@@ -61,12 +61,12 @@ RUN set -x \
         # oms set up
         && unzip $OMS_CONSOLE.zip \
         && rm $OMS_CONSOLE.zip \
-        && mkdir -p /root/.oms/$OMS_VERSION/ \
-        && cp $OMS_CONSOLE/lib/cpptasks-1.0b6-od.jar /root/.oms/$OMS_VERSION/ \
-        && cp $OMS_CONSOLE/lib/groovy-all-2.3.9.jar /root/.oms/$OMS_VERSION/ \
-        && cp $OMS_CONSOLE/lib/jcommon-1.0.15.jar /root/.oms/$OMS_VERSION/ \
-        && cp $OMS_CONSOLE/lib/jfreechart-1.0.12.jar /root/.oms/$OMS_VERSION/ \
-        && cp $OMS_CONSOLE/lib/oms-all.jar /root/.oms/$OMS_VERSION/ \
+        && mkdir -p /opt/.oms/$OMS_VERSION/ \
+        && cp $OMS_CONSOLE/lib/cpptasks-1.0b6-od.jar /opt/.oms/$OMS_VERSION/ \
+        && cp $OMS_CONSOLE/lib/groovy-all-2.3.9.jar /opt/.oms/$OMS_VERSION/ \
+        && cp $OMS_CONSOLE/lib/jcommon-1.0.15.jar /opt/.oms/$OMS_VERSION/ \
+        && cp $OMS_CONSOLE/lib/jfreechart-1.0.12.jar /opt/.oms/$OMS_VERSION/ \
+        && cp $OMS_CONSOLE/lib/oms-all.jar /opt/.oms/$OMS_VERSION/ \
         \
         && mkdir /work \
         && chmod +x /entrypoint.sh

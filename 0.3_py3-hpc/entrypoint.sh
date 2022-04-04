@@ -26,6 +26,20 @@ abort() {
 
 trap 'abort' 0
 
+omslink=$HOME/.oms
+
+if [ -L ${omslink} ] ; then
+   if [ -e ${omslink} ] ; then
+      echo "Good link" >  /dev/null
+   else
+      echo "Broken link" > /dev/null
+   fi
+elif [ -e ${omslink} ] ; then
+   echo "Not a link" > /dev/null
+else
+   ln -sf /opt/.oms $omslink
+fi
+
 sh bash_script/buildOMSprj.sh
 sh bash_script/checkBuildRpackages.sh
 sh bash_script/runOMS.sh $1
